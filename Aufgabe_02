@@ -1,0 +1,30 @@
+class First{
+  static int fortyTwo(){
+    return 42;
+  }
+  static boolean isFortyTwo(int i){
+    if(i==42){
+      return true;
+    }
+    return false;
+  }
+  static int twice(int i){
+    return i*2;
+  }
+  static boolean isOdd(int i){
+    if(i%2 != 0){
+      return true;
+    }
+    return false;
+  }
+  static int century(int i){
+    return i/100;
+  }
+  static int lastTwoDigits(int i){
+    return i%100;
+  }
+  static double arithmeticMean(int x, int y){
+    double result = x + y;
+    return result/2.0;
+  }
+}
