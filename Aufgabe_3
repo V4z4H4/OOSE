@@ -1,0 +1,39 @@
+class Second{
+  static double monom(double a, double x, int e){
+    return a*java.lang.Math.pow(x,e);
+  }
+  
+  static int signum(long x){
+    float s = java.lang.Math.signum(x);
+    return (int)s;
+  }
+  
+  static double flaeche(double r){
+    double pi = Math.PI;
+    return pi*java.lang.Math.pow(r,2);
+  }
+  
+  static double umfang(double r){
+    double pi = Math.PI;
+    return r*2*pi;
+  }
+  
+  static double hoeheGleichschenklig(double a, double c){
+    double c1 = c/2;
+    double c12 = Math.pow(c1,2);
+    double a2 = Math.pow(a,2);
+    return Math.sqrt(a2 - c12);
+  }
+  
+  static double hypothenuse(double a, double b){
+    double a2 = java.lang.Math.pow(a,2);
+    double b2 = java.lang.Math.pow(b,2);
+    return Math.sqrt(a2 + b2);
+  }
+  
+  static double hoeheRechtwinklig(double a, double b){
+    double c = Second.hypothenuse(a,b);
+    double result = (a * b) / c;
+    return result; 
+  }
+}
