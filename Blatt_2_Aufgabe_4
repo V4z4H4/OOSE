@@ -1,0 +1,28 @@
+public class Appointment {
+    
+  DateTime time;
+  int lenght;
+  String reason;
+  String place;
+    
+  Appointment(DateTime dt, int l, String r, String p) {
+    // TODO Auto-generated constructor stub
+    this.time = dt;
+    this.lenght = l;
+    this.reason = r;
+    this.place = p;
+  }
+    
+  public String toString() {
+    // TODO Auto-generated method stub
+    return time.toString() + " " + lenght + " " + reason + " " + place ;
+  }
+  public static void main(String[] args) {
+    Date d = new Date(29,11,2018);
+    Time t = new Time(12,59,15);
+    DateTime dt = new DateTime(d,t);
+    Appointment ap = new Appointment(dt,60,"Zahnarzt","Burgstraße 4");
+    System.out.println(ap.toString());
+    System.out.println(ap.toString());
+  }
+}
