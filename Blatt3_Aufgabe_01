@@ -1,0 +1,81 @@
+class Date{
+  int day;
+  int month;
+  int year;
+      
+  Date(int d,int m,int y){
+    this.day = d;
+    this.month = m;
+    this.year = y;
+  }
+  public String toString(){
+        
+    return day+"."+month+"."+year;
+      
+  }
+  boolean isEarlierThan(Date that){
+    if(this.year > that.year){
+      return false;
+    }else if(this.month > that.month && this.year >= that.year){
+      return false;
+    }else if (this.day > that.day && this.month >= that.month && this.year >= that.year){
+      return false;
+    }else if(isSameDate(that)){
+      return false;
+    }
+     
+       
+    return true;      
+  }
+  boolean isLaterThan(Date that){
+    if(!isEarlierThan(that) && !isSameDate(that)){
+      return true;
+    }
+    return false;           
+  }
+  boolean isSameDate(Date that){
+      if(this.day == that.day && this.month == that.month 
+      && this.year == that.year){
+       
+    return true;
+    }
+       
+    return false;
+  }
+  boolean isLeapYear(){
+    if(year % 4 == 0){
+      if(year % 100 == 0){
+        return (year % 400 == 0);
+      }else{
+        return true;
+          } 
+    }else{
+      return false;
+    }
+  }   
+       
+ 
+  int getAbsoluteDaysInYear(){
+    if (isLeapYear()){
+      return 366;
+    }
+       
+    return 365;
+  }
+     
+  public static void main(String[] args) {
+       
+    Date d1 = new Date(15,5,1900);
+    Date d2 = new Date(12,04,1993);
+    Date d3 = new Date(16,1,2022);
+    System.out.println(d1.toString());
+    System.out.println(d3.toString());
+    System.out.println(d1.isEarlierThan(d3));
+    System.out.println(d1.isLaterThan(d3));
+    System.out.println(d1.isSameDate(d2));
+    System.out.println(d1.isLeapYear());
+    System.out.println(d1.getAbsoluteDaysInYear());
+       
+        
+  }    
+}
