@@ -1,0 +1,70 @@
+public class Time {
+      
+  int hour;
+  int minute;
+  int second;
+  Time t;
+  Time q;
+      
+  Time(int h,int m, int s){
+    this.hour = h;
+    this.minute = m;
+    this.second = s;
+        
+  }
+  public String toString() {
+        
+    return hour+":"+minute+" Uhr";
+  }
+  boolean sameTime(Time that){
+    if(this.minute == that.minute && this.hour == that.hour
+          && this.second == that.second){
+      return true;
+    }
+    return false;
+  }
+  boolean isEarlierThan(Time that){
+    if(this.hour> that.hour){
+      return false;
+    }else if(this.minute > that.minute && this.hour >= that.hour){
+      return false;
+    }else if(this.second > that.second && this.minute >= that.minute 
+        && this.hour >= that.hour){
+      return false;
+    }else if(sameTime(that)){
+      return false;
+    }
+         
+    return true;      
+  }
+  boolean isLaterThan(Time that){
+    if(!isEarlierThan(that)&& !sameTime(that)){
+      return true;
+    } 
+    return false;
+  }  
+  Time minutesLater(int min){
+    int z = minute + min;
+    int x = (minute + min)/60;
+    int y = hour + (1*x);
+    if (z >= 60){
+      z = (z % 60);
+      t = new Time(y % 24,z,second);
+      return t;
+    }
+    q = new Time(hour,z,second);
+    return q;
+  }
+  public static void main(String[] args) {
+    Time t1 = new Time(17,30,45);
+    Time t2 = new Time(16,25,30);
+    System.out.println(t1.toString());
+    System.out.println(t1.isEarlierThan(t2));
+    System.out.println(t1.isLaterThan(t2));
+    System.out.println(t1.minutesLater(60));
+    System.out.println(t1.minutesLater(100));
+    System.out.println(t1.minutesLater(15));
+    System.out.println(t1.minutesLater(2));
+    System.out.println(t1.minutesLater(180));
+  }
+}
