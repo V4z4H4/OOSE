@@ -1,0 +1,50 @@
+class DateTime {
+  Date date;
+  Time time;
+     
+   
+  DateTime(Date d, Time t) {
+       
+    this.date = d;
+    this.time = t;
+  }
+  public String toString(){
+       
+    return date.toString() +" "+ time.toString();
+  }
+     
+   
+    
+   
+  boolean isEarlierThan(DateTime that){
+    if(this.date.isEarlierThan(that.date)){
+      return true;
+    }else if(this.date.isSameDate(that.date) 
+        && this.time.isEarlierThan(that.time)){
+      return true;
+    }
+       
+    return false;
+  }
+     
+  boolean isLaterThan(DateTime that){
+    if(that.isEarlierThan(this)){
+      return true;
+    }
+    return false;
+  }
+  public static void main(String[] args) {
+    Date d = new Date(29,1,2019);
+    Time t = new Time(18,59,0);
+    Date d1 = new Date(29,1,2019);
+    Time t1 = new Time(18,59,0);
+    DateTime dt = new DateTime(d,t);
+    DateTime dt1 = new DateTime(d1,t1);
+    System.out.println(dt.toString());
+    System.out.println(dt1.toString());
+    System.out.println(dt.isEarlierThan(dt1));
+    System.out.println(dt.isLaterThan(dt1));
+         
+           
+  }
+}
