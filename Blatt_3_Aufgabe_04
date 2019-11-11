@@ -1,0 +1,66 @@
+class Appointment {
+   
+  DateTime dateTime;
+  int lenght;
+  String reason;
+  String place;
+   
+  Date date;
+  Time time;
+   
+  Appointment(DateTime dt, int l, String r, String p) {
+    // TODO Auto-generated constructor stub
+    this.dateTime = dt;
+    this.lenght = l;
+    this.reason = r;
+    this.place = p;
+  }
+   
+  public String toString() {
+    // TODO Auto-generated method stub
+    return dateTime.toString() + " " + lenght + " " + reason + " " + place ;
+  }
+   
+  DateTime endingTime(){
+    DateTime endTime = new DateTime(new Date(0,dateTime.date.month,0),
+        new Time(dateTime.time.hour,dateTime.time.minute,dateTime.time.second));
+    int z = endTime.time.minute + lenght;
+    int x = (endTime.time.minute + lenght)/60;
+    int y = endTime.time.hour + (1*x);
+    if (z >= 60){ 
+      z = (z % 60);
+      endTime.time = new Time(y,z,endTime.time.second); 
+    }
+    endTime.time = new Time(endTime.time.hour,z,endTime.time.second);
+     
+    int endingHour = endTime.time.hour;
+    int s = endingHour/24;
+    if(endingHour >= 24){
+      endTime.date.day = (dateTime.date.day + (1 * s));
+      endTime.time.hour = endingHour % 24;
+       
+    }else{
+      endTime.time.hour = endingHour;
+      endTime.date.day = dateTime.date.day;
+    } 
+    if(endTime.date.day >= 31){
+      endTime.date.month = endTime.date.month + (1*endTime.date.day/31);
+      endTime.date.day = endTime.date.day % 30;
+    }
+      
+    endTime.date.year = dateTime.date.year;
+    endTime.time.second = dateTime.time.second;
+    return endTime;
+  }
+   
+  public static void main(String[] args) {
+    Date d = new Date(29,11,2018);
+    Time t = new Time(12,59,15);
+    DateTime dt = new DateTime(d,t);
+    Appointment ap = new Appointment(dt,1701,"Zahnarzt","Burgstraße 4");
+    System.out.println(ap.toString());
+    System.out.println(ap.endingTime());
+    System.out.println(dt.toString());
+     
+  }
+}
